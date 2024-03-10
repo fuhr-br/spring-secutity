@@ -1,10 +1,10 @@
-package larcerto.api.config.security;
+package api.aplication.config.security;
 
+import api.aplication.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import larcerto.api.service.TokenService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;

@@ -1,4 +1,4 @@
-package larcerto.api.model;
+package api.aplication.model;
 
 public enum UsuarioRole {
   ADMINISTRADOR("ADMINISTRADOR"),

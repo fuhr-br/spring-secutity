@@ -1,11 +1,11 @@
-package larcerto.api.service.impl;
+package api.aplication.service.impl;
 
-import larcerto.api.dto.AutenticacaoDTO;
-import larcerto.api.dto.RegistroDTO;
-import larcerto.api.dto.TokenDTO;
-import larcerto.api.model.Usuario;
-import larcerto.api.service.AutorizacaoService;
-import larcerto.api.service.TokenService;
+import api.aplication.dto.AutenticacaoDTO;
+import api.aplication.dto.RegistroDTO;
+import api.aplication.service.TokenService;
+import api.aplication.dto.TokenDTO;
+import api.aplication.model.Usuario;
+import api.aplication.service.AutorizacaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

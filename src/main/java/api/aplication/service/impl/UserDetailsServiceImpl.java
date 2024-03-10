@@ -1,8 +1,8 @@
-package larcerto.api.service.impl;
+package api.aplication.service.impl;
 
-import larcerto.api.dto.RegistroDTO;
-import larcerto.api.model.Usuario;
-import larcerto.api.repository.UsuarioRepository;
+import api.aplication.dto.RegistroDTO;
+import api.aplication.model.Usuario;
+import api.aplication.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

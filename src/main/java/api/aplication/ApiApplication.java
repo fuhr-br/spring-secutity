@@ -1,4 +1,4 @@
-package larcerto.api;
+package api.aplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

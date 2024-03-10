@@ -1,4 +1,4 @@
-package larcerto.api.config.security;
+package api.aplication.config.security;
 
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

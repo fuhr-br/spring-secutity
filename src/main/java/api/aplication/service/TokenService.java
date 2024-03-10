@@ -1,6 +1,6 @@
-package larcerto.api.service;
+package api.aplication.service;
 
-import larcerto.api.model.Usuario;
+import api.aplication.model.Usuario;
 
 public interface TokenService {
 

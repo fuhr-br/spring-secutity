@@ -1,9 +1,9 @@
-package larcerto.api.service.impl;
+package api.aplication.service.impl;
 
+import api.aplication.service.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import larcerto.api.model.Usuario;
-import larcerto.api.service.TokenService;
+import api.aplication.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

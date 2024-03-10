@@ -1,4 +1,4 @@
-package larcerto.api.dto;
+package api.aplication.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

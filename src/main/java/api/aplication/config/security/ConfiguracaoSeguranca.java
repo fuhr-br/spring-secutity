@@ -1,4 +1,4 @@
-package larcerto.api.config.security;
+package api.aplication.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

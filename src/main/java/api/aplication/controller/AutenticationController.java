@@ -1,10 +1,10 @@
-package larcerto.api.controller;
+package api.aplication.controller;
 
+import api.aplication.dto.AutenticacaoDTO;
+import api.aplication.dto.RegistroDTO;
 import jakarta.validation.Valid;
-import larcerto.api.dto.AutenticacaoDTO;
-import larcerto.api.dto.RegistroDTO;
-import larcerto.api.dto.TokenDTO;
-import larcerto.api.service.AutorizacaoService;
+import api.aplication.dto.TokenDTO;
+import api.aplication.service.AutorizacaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

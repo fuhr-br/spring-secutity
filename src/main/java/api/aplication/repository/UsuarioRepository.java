@@ -1,6 +1,6 @@
-package larcerto.api.repository;
+package api.aplication.repository;
 
-import larcerto.api.model.Usuario;
+import api.aplication.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
