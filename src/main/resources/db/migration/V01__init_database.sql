@@ -1,0 +1,6 @@
+CREATE TABLE usuario (
+    id TEXT PRIMARY KEY,
+    login VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(500) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
