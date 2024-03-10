@@ -1,16 +1,18 @@
 package larcerto.api.model;
 
 public enum UsuarioRole {
-  ADMIN("admin"),
-  USER("user");
+  ADMINISTRADOR("ADMINISTRADOR"),
+  USUARIO("USUARIO");
 
   private String role;
 
-  UsuarioRole(String role){
+  UsuarioRole(String role) {
+
     this.role = role;
   }
 
-  public String getRole(){
-    return role;
+  public String getRole() {
+
+    return this.role;
   }
 }

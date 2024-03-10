@@ -40,7 +40,7 @@ public class ConfiguracaoSeguranca {
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorize ->
             authorize
-                .requestMatchers(HttpMethod.GET, "/v1/api/auth").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/v1/api/auth").hasRole("ADMINISTRADOR")
                 .requestMatchers(ENDPOINTS_COM_PERMISSAO_TOTAL).permitAll()
                 .anyRequest().authenticated()
         )
