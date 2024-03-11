@@ -23,7 +23,6 @@ import java.io.IOException;
 public class FiltroSeguranca extends OncePerRequestFilter {
 
   private final TokenService tokenService;
-
   private final UserDetailsService userDetailsService;
 
   @Override
@@ -46,11 +45,8 @@ public class FiltroSeguranca extends OncePerRequestFilter {
 
   private String recuperarToken(HttpServletRequest request) {
 
-    String authorization = request.getHeader("Authorization");
-    if (authorization == null) {
-      return null;
-    }
-    return authorization.replace("Bearer ", "");
+    String token = request.getHeader("Authorization");
+    return token == null ? null : token.replace("Bearer ", "");
 
   }
 

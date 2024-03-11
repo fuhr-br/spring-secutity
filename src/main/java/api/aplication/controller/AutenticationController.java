@@ -7,6 +7,7 @@ import api.aplication.service.AutorizacaoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class AutenticationController {
   }
 
   @PostMapping("/registrar")
+  @PreAuthorize("hasRole('ADMINISTRADOR')")
   public ResponseEntity<String> registrar(@RequestBody @Valid RegistroDTO registroDTO) {
 
     autorizacaoService.cadastrar(registroDTO);
@@ -33,6 +35,7 @@ public class AutenticationController {
   }
 
   @GetMapping
+  @PreAuthorize("hasRole('USUARIO')")
   public ResponseEntity<String> buscar() {
 
     return ResponseEntity.ok("Usuario cadastrado com sucesso");

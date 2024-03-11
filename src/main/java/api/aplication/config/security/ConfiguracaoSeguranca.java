@@ -3,9 +3,9 @@ package api.aplication.config.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -19,10 +19,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@EnableMethodSecurity
 public class ConfiguracaoSeguranca {
 
-
-  public static final String[] ENDPOINTS_COM_PERMISSAO_TOTAL = {
+  private static final String[] ENDPOINTS_COM_PERMISSAO_TOTAL = {
       "/swagger-ui/*",
       "/swagger-ui/*",
       "/v3/api-docs/*",
@@ -30,6 +30,7 @@ public class ConfiguracaoSeguranca {
       "v1/api/auth/login",
       "v1/api/auth/registrar"
   };
+
   private final OncePerRequestFilter oncePerRequestFilter;
 
   @Bean
@@ -40,7 +41,6 @@ public class ConfiguracaoSeguranca {
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorize ->
             authorize
-                .requestMatchers(HttpMethod.GET, "/v1/api/auth").hasRole("ADMINISTRADOR")
                 .requestMatchers(ENDPOINTS_COM_PERMISSAO_TOTAL).permitAll()
                 .anyRequest().authenticated()
         )
