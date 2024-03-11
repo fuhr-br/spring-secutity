@@ -1,17 +1,16 @@
 package api.aplication.service.impl;
 
-import api.aplication.model.UsuarioRole;
+import api.aplication.model.Usuario;
+import api.aplication.model.enums.UsuarioRole;
 import api.aplication.service.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import api.aplication.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
 
 @Service
 public class TokenServiceImpl implements TokenService {
@@ -19,7 +18,7 @@ public class TokenServiceImpl implements TokenService {
   @Value("${api.security.token.secret}")
   private String chaveSecreta;
 
-  private final static String ISSUER = "lar-certo-auth-api";
+  private static final String ISSUER = "lar-certo-auth-api";
 
   @Override
   public String gerarToken(Usuario usuario) {
@@ -30,7 +29,6 @@ public class TokenServiceImpl implements TokenService {
         .withExpiresAt(criarTempoExpericacaoToken())
         .withClaim("role", usuario.getRoles().stream().map(UsuarioRole::getRole).toList())
         .sign(gerarAlgorithm());
-    //TODO:tratar possivel JWTCreationException
   }
 
   @Override
@@ -41,7 +39,6 @@ public class TokenServiceImpl implements TokenService {
         .build()
         .verify(token)
         .getSubject();
-    //TODO:tratar possivel JWTVerificationException
   }
 
   private Algorithm gerarAlgorithm() {

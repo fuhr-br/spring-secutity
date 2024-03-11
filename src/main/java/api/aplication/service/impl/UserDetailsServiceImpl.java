@@ -1,6 +1,7 @@
 package api.aplication.service.impl;
 
 import api.aplication.dto.RegistroDTO;
+import api.aplication.exceptions.UsuarioCadastradoException;
 import api.aplication.model.Usuario;
 import api.aplication.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +24,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   }
 
   protected UserDetails cadastrar(RegistroDTO registroDTO) {
-    //TODO criar handler
+
     if (usuarioRepository.findByLogin(registroDTO.nome()) != null) {
-      throw new RuntimeException("Erro login");
+      throw new UsuarioCadastradoException("Usuário já esta cadastrado, faça login ou " +
+          "entre em contado com o suporte para recuperar sua credencial!");
     }
     return usuarioRepository.save(Usuario.builder()
         .password(new BCryptPasswordEncoder().encode(registroDTO.senha()))

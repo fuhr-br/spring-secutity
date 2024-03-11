@@ -1,4 +1,4 @@
-package api.aplication.model;
+package api.aplication.model.enums;
 
 public enum UsuarioRole {
   ADMINISTRADOR("ADMINISTRADOR"),
