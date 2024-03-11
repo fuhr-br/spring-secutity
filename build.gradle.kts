@@ -28,7 +28,7 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 	implementation("com.auth0:java-jwt:4.4.0")
-
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	compileOnly("org.projectlombok:lombok")
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -39,7 +39,6 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
-
 
 }
 

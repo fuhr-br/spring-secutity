@@ -1,5 +1,6 @@
 package api.aplication.service.impl;
 
+import api.aplication.model.UsuarioRole;
 import api.aplication.service.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -27,7 +28,7 @@ public class TokenServiceImpl implements TokenService {
         .withIssuer(ISSUER)
         .withSubject(usuario.getUsername())
         .withExpiresAt(criarTempoExpericacaoToken())
-        .withClaim("role", List.of(usuario.getRole().name()))
+        .withClaim("role", usuario.getRoles().stream().map(UsuarioRole::getRole).toList())
         .sign(gerarAlgorithm());
     //TODO:tratar possivel JWTCreationException
   }

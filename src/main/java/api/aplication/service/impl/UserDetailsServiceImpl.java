@@ -30,7 +30,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     return usuarioRepository.save(Usuario.builder()
         .password(new BCryptPasswordEncoder().encode(registroDTO.senha()))
         .login(registroDTO.nome())
-        .role(registroDTO.role())
+        .roles(registroDTO.roles())
+        .dataExpiracaoCredencial(registroDTO.dataExperiacao())
         .build());
   }
 
