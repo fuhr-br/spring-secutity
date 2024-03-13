@@ -4,6 +4,7 @@ import api.aplication.dto.AutenticacaoDTO;
 import api.aplication.dto.RegistroDTO;
 import api.aplication.dto.TokenDTO;
 import api.aplication.service.AutorizacaoService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class AutenticationController {
   }
 
   @PostMapping("/registrar")
-  @PreAuthorize("hasRole('ADMINISTRADOR')")
+  @PermitAll
   public ResponseEntity<String> registrar(@RequestBody @Valid RegistroDTO registroDTO) {
 
     autorizacaoService.cadastrar(registroDTO);
@@ -38,7 +39,7 @@ public class AutenticationController {
   @PreAuthorize("hasRole('USUARIO')")
   public ResponseEntity<String> buscar() {
 
-    return ResponseEntity.ok("Usuario cadastrado com sucesso");
+    return ResponseEntity.ok("Busca com sucesso");
 
   }
 

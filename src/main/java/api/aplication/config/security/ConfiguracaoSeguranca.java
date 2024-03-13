@@ -22,42 +22,43 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @EnableMethodSecurity
 public class ConfiguracaoSeguranca {
 
-  private static final String[] ENDPOINTS_COM_PERMISSAO_TOTAL = {
-      "/swagger-ui/*",
-      "/swagger-ui/*",
-      "/v3/api-docs/*",
-      "/v3/api-docs",
-      "v1/api/auth/login",
-      "v1/api/auth/registrar"
-  };
+    private static final String[] ENDPOINTS_COM_PERMISSAO_TOTAL = {
+            "/swagger-ui/*",
+            "/swagger-ui/*",
+            "/v3/api-docs/*",
+            "/v3/api-docs",
+            "/actuator/health",
+            "v1/api/auth/login",
+            "v1/api/auth/registrar"
+    };
 
-  private final OncePerRequestFilter oncePerRequestFilter;
+    private final OncePerRequestFilter oncePerRequestFilter;
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-    return http
-        .csrf(AbstractHttpConfigurer::disable)
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(authorize ->
-            authorize
-                .requestMatchers(ENDPOINTS_COM_PERMISSAO_TOTAL).permitAll()
-                .anyRequest().authenticated()
-        )
-        .addFilterBefore(oncePerRequestFilter, UsernamePasswordAuthenticationFilter.class)
-        .build();
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .requestMatchers(ENDPOINTS_COM_PERMISSAO_TOTAL).permitAll()
+                                .anyRequest().authenticated()
+                )
+                .addFilterBefore(oncePerRequestFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
 
-  }
+    }
 
-  @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 
-    return authenticationConfiguration.getAuthenticationManager();
-  }
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
 
-    return new BCryptPasswordEncoder();
-  }
+        return new BCryptPasswordEncoder();
+    }
 }
