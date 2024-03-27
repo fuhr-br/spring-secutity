@@ -18,7 +18,7 @@ public class TokenServiceImpl implements TokenService {
   @Value("${api.security.token.secret}")
   private String chaveSecreta;
 
-  private static final String ISSUER = "lar-certo-auth-api";
+  private static final String ISSUER = "auth-api";
 
   @Override
   public String gerarToken(Usuario usuario) {

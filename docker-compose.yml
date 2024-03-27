@@ -1,0 +1,17 @@
+version: '1'
+services:
+  db:
+    image: postgres:16
+    restart: always
+    container_name: DB-Spring-Security
+    environment:
+      POSTGRES_USER: seguranca
+      POSTGRES_PASSWORD: seguranca
+      POSTGRES_DB: seguranca
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

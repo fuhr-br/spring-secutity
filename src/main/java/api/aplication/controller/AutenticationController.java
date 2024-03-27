@@ -27,7 +27,6 @@ public class AutenticationController {
   }
 
   @PostMapping("/registrar")
-  @PermitAll
   public ResponseEntity<String> registrar(@RequestBody @Valid RegistroDTO registroDTO) {
 
     autorizacaoService.cadastrar(registroDTO);
