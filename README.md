@@ -9,6 +9,8 @@
 <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
 </p>
 
+[![Java CI com Gradle](https://github.com/fuhr-br/spring-secutity/actions/workflows/gradle.yml/badge.svg)](https://github.com/fuhr-br/spring-secutity/actions/workflows/gradle.yml)
+
 
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Funcionalidades](#funcionalidades)
