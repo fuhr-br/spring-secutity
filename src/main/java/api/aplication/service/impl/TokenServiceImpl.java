@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class TokenServiceImpl implements TokenService {
@@ -28,6 +29,7 @@ public class TokenServiceImpl implements TokenService {
         .withSubject(usuario.getUsername())
         .withExpiresAt(criarTempoExpericacaoToken())
         .withClaim("role", usuario.getRoles().stream().map(UsuarioRole::getRole).toList())
+        .withClaim("expiration", formatarDataExpiracao())
         .sign(gerarAlgorithm());
   }
 
@@ -49,6 +51,12 @@ public class TokenServiceImpl implements TokenService {
   private Instant criarTempoExpericacaoToken() {
 
     return LocalDateTime.now().plusHours(12).toInstant(ZoneOffset.of("-03:00"));
+  }
+
+  private String formatarDataExpiracao() {
+    LocalDateTime expiracaoLocal = LocalDateTime.ofInstant(criarTempoExpericacaoToken(), ZoneOffset.of("-03:00"));
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+    return expiracaoLocal.format(formatter);
   }
 
 }
